@@ -1,6 +1,10 @@
 #! /usr/bin/env node
 var program = require("commander");
 var fs = require("fs");
+const path = require('path');
+// FIXME: what to do if in development?
+const packagePath = path.dirname(require.resolve("commander-pages/package.json"));
+console.log(packagePath)
 //TODO: set parameters for the color scheme
 program
   .version("0.0.1")
@@ -12,23 +16,18 @@ program
   .option("-C, --no-cheese", "You do not want any cheese")
   .parse(process.argv);
 
-var dir = "./site/";
-var markdownDir = "./site/pages/markdown/";
+  // FIXME: should not have paths like this
+var srcDir = './src/'
+var pagesDir = "./src/pages/";
+var markdownDir = "./src/pages/markdown/";
+var templateDir = "/templates/";
 
-var pagesDir = "./site/pages/";
+var text = fs.readFileSync(packagePath + '/' + templateDir + "gatsby-config.js", "utf8");
+var indexText = fs.readFileSync(packagePath + '/' + templateDir + "index.md", "utf8");
 
-var templateDir = "./templates/";
-
-var text = fs.readFileSync(templateDir + "gatsby-config.js", "utf8");
-var indexText = fs.readFileSync(templateDir + "index.md", "utf8");
-
-//FIXME: refactor repeated if statements
-if (!fs.existsSync(dir, { recursive: true })) {
-  fs.mkdirSync(dir, { recursive: true });
-  console.log("created");
-}
-if (!fs.existsSync(markdownDir, { recursive: true })) {
-  fs.mkdirSync(markdownDir, { recursive: true });
+// FIXME: refactor repeated if statements
+if (!fs.existsSync(srcDir, { recursive: true })) {
+  fs.mkdirSync(srcDir, { recursive: true });
   console.log("created");
 }
 if (!fs.existsSync(pagesDir, { recursive: true })) {
@@ -40,9 +39,9 @@ if (!fs.existsSync(markdownDir, { recursive: true })) {
   console.log("created");
 }
 
-//FIXME: refactor repeated write files
+// FIXME: refactor repeated write files
 // TODO: make console logs more developer friendly (possibly using color??)
-fs.writeFile(dir + "gatsby-config.js", text, function(err) {
+fs.writeFile("gatsby-config.js", text, function(err) {
   if (err) {
     return console.log(err);
   }

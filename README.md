@@ -1,17 +1,16 @@
 # Commander Pages
-- make pages and websites from the command line.
-- one page setup :D
+- make websites from the command line.
 
 ## User Can
 - create a gatsby page from the command line
-- set the settings fromthe command line
+- set the settings from the command line
 - deploy from the command line
 
-## Tested with yarn
+## Install with yarn
 1. Install 
 `yarn add gatsby gatsby-theme-modern-portfolio commander-pages -D`
 2. Run the command
-`yarn create-site1`
+`yarn create-commander-page`
 
 ## TODO: 
 - add index.md to templates
