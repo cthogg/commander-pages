@@ -1,6 +1,7 @@
 {
-  "name": "my-project",
-  "version": "1.0.0",
+  "name": "commander-pages",
+  "version": "0.0.1",
+  "description": "create beautiful websites from the command line",
   "bin": {
     "create-site1": "bin/commit.js"
   },
