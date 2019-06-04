@@ -1,6 +1,6 @@
 {
   "name": "commander-pages",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "create beautiful websites from the command line",
   "bin": {
     "create-site1": "bin/commit.js"
