@@ -1,0 +1,10 @@
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "bin": {
+    "create-site1": "bin/commit.js"
+  },
+  "dependencies": {
+    "commander": "^2.20.0"
+  }
+}
