@@ -12,5 +12,9 @@
 `yarn add gatsby gatsby-theme-modern-portfolio commander-pages -D`
 2. Run the command
 `yarn create-site1`
+
+## TODO: 
+- add index.md to templates
+- add `.cache` and `public` to the repo's `.gitignore` file
 ## Thanks to
 https://docs.npmjs.com/creating-and-publishing-scoped-public-packages
