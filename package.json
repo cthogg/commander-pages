@@ -1,11 +1,18 @@
 {
   "name": "commander-pages",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "create beautiful websites from the command line",
   "bin": {
     "create-commander-page": "bin/createPage.js"
   },
   "dependencies": {
     "commander": "^2.20.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cthogg/commander-pages"
+  },
+  "bugs": {
+    "url": "https://github.com/cthogg/commander-pages/issues"
   }
 }
