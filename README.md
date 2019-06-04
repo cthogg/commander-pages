@@ -7,13 +7,12 @@
 - deploy from the command line
 
 ## Install with yarn
-1. Install 
+1. Install the cli along with gatsby and a compatible gatsby theme 
 `yarn add gatsby gatsby-theme-modern-portfolio commander-pages -D`
-2. Run the command
+2. Run commander-pages to create example files for the gatsby theme.
 `yarn create-commander-page`
+3. add `.cache` and `public` to the repo's `.gitignore` file
+4. Check if correctly installed with `yarn gatsby develop`
 
-## TODO: 
-- add index.md to templates
-- add `.cache` and `public` to the repo's `.gitignore` file
-## Thanks to
+## Tutorials i used when creating this
 https://docs.npmjs.com/creating-and-publishing-scoped-public-packages

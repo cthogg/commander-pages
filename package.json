@@ -1,9 +1,9 @@
 {
   "name": "commander-pages",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "create beautiful websites from the command line",
   "bin": {
-    "create-site1": "bin/commit.js"
+    "create-commander-page": "bin/createPage.js"
   },
   "dependencies": {
     "commander": "^2.20.0"
