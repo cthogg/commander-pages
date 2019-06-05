@@ -1,7 +1,4 @@
-/**
- * Pizza delivery prompt example
- * run example by writing `node pizza.js` in your console
- */
+#! /usr/bin/env node
 // eslint-disable-next-line
 const inquirer = require('inquirer');
 const chalk = require('chalk');
@@ -26,11 +23,9 @@ const questions = [
 
 inquirer.prompt(questions).then((answers) => {
   const { title, subtitle } = answers;
-  const textFromAnswers = `
-   
----
-title: ${title}
-subtitle: ${subtitle} 
+  const textFromAnswers = `---
+title: "${title}"
+subtitle: "${subtitle}" 
 email: "john@doe.com"
 linkedin: "https://www.linkedin.com/in/john_doe"
 textColor: 'black'

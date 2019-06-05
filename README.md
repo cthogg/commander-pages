@@ -2,7 +2,8 @@
 - make websites from the command line.
 
 ## User Can
-- create a gatsby page from the command line Y
+- create a gatsby page from the command line 
+- edit the gatsby theme `index.md` file from the prompt
 
 ## Install with yarn
 1. Install the cli along with gatsby and a compatible gatsby theme 
@@ -14,7 +15,6 @@
 5. Edit the page by editing `src/pages/markdown/index.md`
 
 ## Roadmap
-- edit the gatsby theme `index.md` file
 - deploy using the `netlify cli`
 - https://github.com/SBoudrias/Inquirer.js
 ## Tutorials i used when creating this

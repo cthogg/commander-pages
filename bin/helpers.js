@@ -9,9 +9,12 @@ exports.createFile = (dir, text) => {
   });
 };
 
-exports.createDirectory = (dir) => {
+// eslint-disable-next-line
+exports.createDirectory = (dir, err) => {
   if (!fs.existsSync(dir, { recursive: true })) {
     fs.mkdirSync(dir, { recursive: true });
-    console.log('created');
+    if (err) {
+      return console.log(err);
+    }
   }
 };

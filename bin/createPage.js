@@ -1,13 +1,11 @@
-#! /usr/bin/env node
 const program = require('commander');
 const fs = require('fs');
+const path = require('path');
 const helper = require('./helpers');
-
 // const path = require('path');
 // FIXME: what to do if in development?
-// const packagePath = path.dirname(require.resolve("commander-pages/package.json"));
-const packagePath = '.';
-console.log(packagePath);
+const packagePath = path.dirname(require.resolve('commander-pages/package.json'));
+// const packagePath = '.';
 // TODO: set parameters for the color scheme
 program
   .version('0.0.1')
@@ -22,7 +20,8 @@ program
 // FIXME: should not have paths like this
 const templateDir = '/templates/';
 const defaultIndexText = fs.readFileSync(
-  `${packagePath}/${templateDir}index.md`,
+  // FIXME: need to add a / between dirs if developing locally
+  `${packagePath}${templateDir}index.md`,
   'utf8',
 );
 
@@ -33,7 +32,8 @@ const createPage = (indexText) => {
   const markdownFileDir = `${markdownDir}index.md`;
 
   const text = fs.readFileSync(
-    `${packagePath}/${templateDir}gatsby-config.js`,
+    // FIXME: need to add a / between dirs if developing locally
+    `${packagePath}${templateDir}gatsby-config.js`,
     'utf8',
   );
 

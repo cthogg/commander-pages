@@ -1,6 +1,6 @@
 {
   "name": "commander-pages",
-  "version": "0.2.0",
+  "version": "0.2.5",
   "description": "create beautiful websites from the command line",
   "bin": {
     "create-commander-page": "bin/createPagePrompt.js"
