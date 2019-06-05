@@ -2,7 +2,7 @@
 var helper = require('./helpers')
 var program = require("commander");
 var fs = require("fs");
-const path = require('path');
+// const path = require('path');
 // FIXME: what to do if in development?
 // const packagePath = path.dirname(require.resolve("commander-pages/package.json"));
 const packagePath = '.'
@@ -20,21 +20,27 @@ program
 
 
   // FIXME: should not have paths like this
-var srcDir = './src/'
-var pagesDir = "./src/pages/";
-const markdownDir = "./src/pages/markdown/";
-const markdownFileDir = markdownDir + "index.md"
-var templateDir = "/templates/";
+  var templateDir = "/templates/";
+  var defaultIndexText = fs.readFileSync(packagePath + '/' + templateDir + "index.md", "utf8");
 
-var text = fs.readFileSync(packagePath + '/' + templateDir + "gatsby-config.js", "utf8");
-var indexText = fs.readFileSync(packagePath + '/' + templateDir + "index.md", "utf8");
+  const createPage = (indexText) => {
+    var srcDir = './src/'
+    var pagesDir = "./src/pages/";
+    const markdownDir = "./src/pages/markdown/";
+    const markdownFileDir = markdownDir + "index.md"
+    
+    var text = fs.readFileSync(packagePath + '/' + templateDir + "gatsby-config.js", "utf8");
+    
+    helper.createDirectory(srcDir);
+    helper.createDirectory(pagesDir);
+    helper.createDirectory(markdownDir)
+    
+    // TODO: make console logs more developer friendly (possibly using color??)
+    
+    helper.createFile("gatsby-config.js", text)
+    helper.createFile(markdownFileDir,indexText)
+  }
 
-// FIXME: refactor repeated if statements
-helper.createDirectory(srcDir);
-helper.createDirectory(pagesDir);
-helper.createDirectory(markdownDir)
+  createPage(defaultIndexText)
 
-// FIXME: refactor repeated write files
-// TODO: make console logs more developer friendly (possibly using color??)
-helper.createFile("gatsby-config.js", text)
-helper.createFile(markdownFileDir,indexText)
+  module.exports.createPage = createPage
