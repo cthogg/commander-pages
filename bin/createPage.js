@@ -1,4 +1,3 @@
-const program = require('commander');
 const fs = require('fs');
 const path = require('path');
 const helper = require('./helpers');
@@ -6,17 +5,6 @@ const helper = require('./helpers');
 // FIXME: what to do if in development?
 const packagePath = path.dirname(require.resolve('commander-pages/package.json'));
 // const packagePath = './';
-// TODO: set parameters for the color scheme
-program
-  .version('0.0.1')
-  .description('An application for pizzas ordering')
-  .option('-p, --peppers', 'Add peppers')
-  .option('-P, --pineapple', 'Add pineapple')
-  .option('-b, --bbq', 'Add bbq sauce')
-  .option('-c, --cheese <type>', 'Add the specified type of cheese [marble]')
-  .option('-C, --no-cheese', 'You do not want any cheese')
-  .parse(process.argv);
-
 // FIXME: should not have paths like this
 const templateDir = '/templates/';
 const defaultIndexText = fs.readFileSync(
