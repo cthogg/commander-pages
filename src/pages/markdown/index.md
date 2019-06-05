@@ -1,8 +1,8 @@
 
    
-   ---
-title: jdsdsds
-subtitle: "My Website"
+---
+title: I am John Doe
+subtitle: I am a web developer 
 email: "john@doe.com"
 linkedin: "https://www.linkedin.com/in/john_doe"
 textColor: 'black'

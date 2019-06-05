@@ -1,11 +1,11 @@
 const fs = require('fs');
 
 exports.createFile = (dir, text) => {
+  // eslint-disable-next-line
   fs.writeFile(dir, text, (err) => {
     if (err) {
       return console.log(err);
     }
-    console.log('The file was saved!');
   });
 };
 

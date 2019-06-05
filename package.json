@@ -1,11 +1,12 @@
 {
   "name": "commander-pages",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "create beautiful websites from the command line",
   "bin": {
-    "create-commander-page": "bin/createPage.js"
+    "create-commander-page": "bin/createPagePrompt.js"
   },
   "dependencies": {
+    "chalk": "^2.4.2",
     "commander": "^2.20.0",
     "inquirer": "^6.3.1"
   },

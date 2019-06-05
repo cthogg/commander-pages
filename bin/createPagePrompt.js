@@ -2,8 +2,9 @@
  * Pizza delivery prompt example
  * run example by writing `node pizza.js` in your console
  */
-
+// eslint-disable-next-line
 const inquirer = require('inquirer');
+const chalk = require('chalk');
 const createPage = require('./createPage');
 
 console.log('Hi, welcome to Commander Pages');
@@ -13,15 +14,23 @@ const questions = [
     type: 'input',
     name: 'title',
     message: 'What is the title of your website?',
+    default: 'I am John Doe',
+  },
+  {
+    type: 'input',
+    name: 'subtitle',
+    message: 'and the subtitle?',
+    default: 'I am a web developer',
   },
 ];
 
 inquirer.prompt(questions).then((answers) => {
+  const { title, subtitle } = answers;
   const textFromAnswers = `
    
 ---
-title: ${answers.title}
-subtitle: "My Website"
+title: ${title}
+subtitle: ${subtitle} 
 email: "john@doe.com"
 linkedin: "https://www.linkedin.com/in/john_doe"
 textColor: 'black'
@@ -35,9 +44,7 @@ fontFamily: 'Overlock, cursive;'
    
    
    `;
-
-  console.log('\n Website Information:');
-  console.log(JSON.stringify(answers, null, '  '));
-  console.log(textFromAnswers);
   createPage.createPage(textFromAnswers);
+  console.log(chalk.yellow.bold('\nPage Created Successfully'));
+  console.log('\nplease run `yarn gatsby develop` to start');
 });
