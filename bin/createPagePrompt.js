@@ -3,22 +3,21 @@
  * run example by writing `node pizza.js` in your console
  */
 
-'use strict';
-var inquirer = require('inquirer');
-var createPage = require('./createPage')
+const inquirer = require('inquirer');
+const createPage = require('./createPage');
+
 console.log('Hi, welcome to Commander Pages');
 
-var questions = [
+const questions = [
   {
     type: 'input',
     name: 'title',
-    message: "What is the title of your website?",
+    message: 'What is the title of your website?',
   },
 ];
 
-inquirer.prompt(questions).then(answers => {
-
-   const textFromAnswers = `
+inquirer.prompt(questions).then((answers) => {
+  const textFromAnswers = `
    
 ---
 title: ${answers.title}
@@ -35,11 +34,10 @@ fontFamily: 'Overlock, cursive;'
 - Building websites
    
    
-   `
-   
-   
+   `;
+
   console.log('\n Website Information:');
   console.log(JSON.stringify(answers, null, '  '));
-  console.log(textFromAnswers)
-  createPage.createPage(textFromAnswers)
+  console.log(textFromAnswers);
+  createPage.createPage(textFromAnswers);
 });

@@ -1,46 +1,52 @@
 #! /usr/bin/env node
-var helper = require('./helpers')
-var program = require("commander");
-var fs = require("fs");
+const program = require('commander');
+const fs = require('fs');
+const helper = require('./helpers');
+
 // const path = require('path');
 // FIXME: what to do if in development?
 // const packagePath = path.dirname(require.resolve("commander-pages/package.json"));
-const packagePath = '.'
-console.log(packagePath)
-//TODO: set parameters for the color scheme
+const packagePath = '.';
+console.log(packagePath);
+// TODO: set parameters for the color scheme
 program
-  .version("0.0.1")
-  .description("An application for pizzas ordering")
-  .option("-p, --peppers", "Add peppers")
-  .option("-P, --pineapple", "Add pineapple")
-  .option("-b, --bbq", "Add bbq sauce")
-  .option("-c, --cheese <type>", "Add the specified type of cheese [marble]")
-  .option("-C, --no-cheese", "You do not want any cheese")
+  .version('0.0.1')
+  .description('An application for pizzas ordering')
+  .option('-p, --peppers', 'Add peppers')
+  .option('-P, --pineapple', 'Add pineapple')
+  .option('-b, --bbq', 'Add bbq sauce')
+  .option('-c, --cheese <type>', 'Add the specified type of cheese [marble]')
+  .option('-C, --no-cheese', 'You do not want any cheese')
   .parse(process.argv);
 
+// FIXME: should not have paths like this
+const templateDir = '/templates/';
+const defaultIndexText = fs.readFileSync(
+  `${packagePath}/${templateDir}index.md`,
+  'utf8',
+);
 
-  // FIXME: should not have paths like this
-  var templateDir = "/templates/";
-  var defaultIndexText = fs.readFileSync(packagePath + '/' + templateDir + "index.md", "utf8");
+const createPage = (indexText) => {
+  const srcDir = './src/';
+  const pagesDir = './src/pages/';
+  const markdownDir = './src/pages/markdown/';
+  const markdownFileDir = `${markdownDir}index.md`;
 
-  const createPage = (indexText) => {
-    var srcDir = './src/'
-    var pagesDir = "./src/pages/";
-    const markdownDir = "./src/pages/markdown/";
-    const markdownFileDir = markdownDir + "index.md"
-    
-    var text = fs.readFileSync(packagePath + '/' + templateDir + "gatsby-config.js", "utf8");
-    
-    helper.createDirectory(srcDir);
-    helper.createDirectory(pagesDir);
-    helper.createDirectory(markdownDir)
-    
-    // TODO: make console logs more developer friendly (possibly using color??)
-    
-    helper.createFile("gatsby-config.js", text)
-    helper.createFile(markdownFileDir,indexText)
-  }
+  const text = fs.readFileSync(
+    `${packagePath}/${templateDir}gatsby-config.js`,
+    'utf8',
+  );
 
-  createPage(defaultIndexText)
+  helper.createDirectory(srcDir);
+  helper.createDirectory(pagesDir);
+  helper.createDirectory(markdownDir);
 
-  module.exports.createPage = createPage
+  // TODO: make console logs more developer friendly (possibly using color??)
+
+  helper.createFile('gatsby-config.js', text);
+  helper.createFile(markdownFileDir, indexText);
+};
+
+createPage(defaultIndexText);
+
+module.exports.createPage = createPage;
