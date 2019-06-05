@@ -6,7 +6,8 @@
     "create-commander-page": "bin/createPage.js"
   },
   "dependencies": {
-    "commander": "^2.20.0"
+    "commander": "^2.20.0",
+    "inquirer": "^6.3.1"
   },
   "repository": {
     "type": "git",

@@ -1,9 +1,11 @@
 #! /usr/bin/env node
+var helper = require('./helpers')
 var program = require("commander");
 var fs = require("fs");
 const path = require('path');
 // FIXME: what to do if in development?
-const packagePath = path.dirname(require.resolve("commander-pages/package.json"));
+// const packagePath = path.dirname(require.resolve("commander-pages/package.json"));
+const packagePath = '.'
 console.log(packagePath)
 //TODO: set parameters for the color scheme
 program
@@ -16,41 +18,23 @@ program
   .option("-C, --no-cheese", "You do not want any cheese")
   .parse(process.argv);
 
+
   // FIXME: should not have paths like this
 var srcDir = './src/'
 var pagesDir = "./src/pages/";
-var markdownDir = "./src/pages/markdown/";
+const markdownDir = "./src/pages/markdown/";
+const markdownFileDir = markdownDir + "index.md"
 var templateDir = "/templates/";
 
 var text = fs.readFileSync(packagePath + '/' + templateDir + "gatsby-config.js", "utf8");
 var indexText = fs.readFileSync(packagePath + '/' + templateDir + "index.md", "utf8");
 
 // FIXME: refactor repeated if statements
-if (!fs.existsSync(srcDir, { recursive: true })) {
-  fs.mkdirSync(srcDir, { recursive: true });
-  console.log("created");
-}
-if (!fs.existsSync(pagesDir, { recursive: true })) {
-  fs.mkdirSync(pagesDir, { recursive: true });
-  console.log("created");
-}
-if (!fs.existsSync(markdownDir, { recursive: true })) {
-  fs.mkdirSync(markdownDir, { recursive: true });
-  console.log("created");
-}
+helper.createDirectory(srcDir);
+helper.createDirectory(pagesDir);
+helper.createDirectory(markdownDir)
 
 // FIXME: refactor repeated write files
 // TODO: make console logs more developer friendly (possibly using color??)
-fs.writeFile("gatsby-config.js", text, function(err) {
-  if (err) {
-    return console.log(err);
-  }
-  console.log("The file was saved!");
-});
-
-fs.writeFile(markdownDir + "index.md", indexText, function(err) {
-  if (err) {
-    return console.log(err);
-  }
-  console.log("The file was saved!");
-});
+helper.createFile("gatsby-config.js", text)
+helper.createFile(markdownFileDir,indexText)
