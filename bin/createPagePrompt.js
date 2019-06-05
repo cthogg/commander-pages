@@ -4,7 +4,7 @@ const inquirer = require('inquirer');
 const chalk = require('chalk');
 const createPage = require('./createPage');
 
-console.log('Hi, welcome to Commander Pages');
+console.log(chalk.bgWhite.black.bold('\nWelcome to Commander Pages\n'));
 
 const questions = [
   {
@@ -41,5 +41,5 @@ fontFamily: 'Overlock, cursive;'
    `;
   createPage.createPage(textFromAnswers);
   console.log(chalk.yellow.bold('\nPage Created Successfully'));
-  console.log('\nplease run `yarn gatsby develop` to start');
+  console.log('\nplease run `yarn gatsby develop` to start\n');
 });
